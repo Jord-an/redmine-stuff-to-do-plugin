@@ -35,7 +35,7 @@ Redmine::Plugin.register :stuff_to_do_plugin do
            })
 
   # A new item is added to the project menu
-  menu :top_menu, :stuff_to_do, { :controller => 'stuff_to_do', :action => 'index'}, :caption => :stuff_to_do_title, :if => Proc.new{ User.current.logged? }
+  menu :top_menu, :stuff_to_do, { :controller => 'stuff_to_do', :action => 'index'}, :caption => 'Task Board', :if => Proc.new{ User.current.logged? }
 
   project_module :stuff_to_do do
     permission :view_others_stuff_to_do, {:stuff_to_do => :index}
