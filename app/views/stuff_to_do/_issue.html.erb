@@ -15,7 +15,8 @@
 <div class="issue-details">
 <%= link_to(image_tag('ticket.png') + '#' + h(issue.id), :controller => 'issues', :action => 'show', :id => issue) %>
 - <%= h(issue.project.name) %> -
-<%= h(issue.subject) %>
+<%= h(issue.subject) %> -
+<span class="tags"><%= h(issue.tags.collect { |t| t.name }.join(',')) %></span> -
 </div>
 
 <div style="clear:both;"></div>
