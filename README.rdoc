@@ -2,6 +2,7 @@
 
 The Stuff To Do plugin allows a user to order and prioritize the issues and projects they are doing into a specific order. It will also allow other privileged users to reorder the user's workload.
 
+<b>NOTE: There are customizations to the issue partial that are dependent upon the redmine_tags plugin.</b>
 
 == Features
 
