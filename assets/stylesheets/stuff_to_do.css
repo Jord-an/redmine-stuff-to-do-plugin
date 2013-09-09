@@ -17,6 +17,9 @@ div.menu { float:right; text-align: right; }
 .stuff-to-do-item div.issue-details, .stuff-to-do-item div.project-details { position:relative; display:inline; margin: 0 .5%; }
 .stuff-to-do-item div.version { position:relative; float:right; display: inline; width: 150px; margin: 0; text-align: center; }
 .stuff-to-do-item div.status { position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; }
+.stuff-to-do-item div.issue-status { border: 1px solid #000; }
+.stuff-to-do-item div.issue-status-qa { background-color: #FFFFD2; font-weight: bold; }
+.stuff-to-do-item div.issue-status-feedback { background-color: #FFD1D1; font-weight: bold; }
 .stuff-to-do-item span.tags { color: #093; font-weight:bold; font-style:italic; }
 .stuff-to-do-item div.status p.pourcent { display: none; }
 .stuff-to-do-item { border-bottom: solid 1px #ccc; }

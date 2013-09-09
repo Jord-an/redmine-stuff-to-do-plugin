@@ -7,6 +7,15 @@
   <% else %>
     <div class="estimate"><strong>No estimate</strong></div>
   <% end %>
+  <% if issue.status.to_s == 'QA' %>
+    <div class="issue-status issue-status-qa">
+  <% elsif issue.status.to_s == 'Feedback' %>
+    <div class="issue-status issue-status-feedback">
+  <% else %>
+    <div class="issue-status">
+  <% end %>
+      <%= h(issue.status) %>
+    </div>
   <div style="clear:both;"></div>
 </div>
 
@@ -14,7 +23,7 @@
 
 <div class="issue-details">
 <%= link_to(image_tag('ticket.png') + '#' + h(issue.id), :controller => 'issues', :action => 'show', :id => issue) %>
-- <%= h(issue.project.name) %> -
+- [<%= h(issue.project.name) %>] -
 <%= h(issue.subject) %> -
 <span class="tags"><%= h(issue.tags.collect { |t| t.name }.join(' | ')) %></span> -
 </div>
