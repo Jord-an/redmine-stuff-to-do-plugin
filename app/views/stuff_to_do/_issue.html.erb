@@ -19,7 +19,14 @@
   <div style="clear:both;"></div>
 </div>
 
-<div class="version"><%= issue.fixed_version ? issue.fixed_version.to_s : "-" %></div>
+<div class="version">
+  <%= issue.fixed_version ? issue.fixed_version.to_s : "-" %>
+  <br />
+  <br />
+  Due
+  <br />
+  <%= issue.due_date ? "[ " + issue.due_date.to_time.strftime('%m/%d/%Y') + " ]" : "[ - ]" %>
+</div>
 
 <div class="issue-details">
 <%= link_to(image_tag('ticket.png') + '#' + h(issue.id), :controller => 'issues', :action => 'show', :id => issue) %>
