@@ -20,7 +20,19 @@
 </div>
 
 <div class="version">
-  <%= issue.fixed_version ? issue.fixed_version.to_s : "-" %>
+  <% if issue.fixed_version %>
+    <div class='tags' style='text-align: left;'>
+      <span class='tag-nube-1' style='font-size: 1em;'>
+        <span class='tag-label-color' style='color:#ffffff;background-color:<%= tag_color(issue.fixed_version) %>'>
+          <%= link_to(issue.fixed_version.to_s, version_path(:id => issue.fixed_version.id)) %>
+        </span>
+      </span>
+    </div>
+  <% else %>
+    <span style="background-color:#FFF5B0;">
+      [ NO SPRINT ]
+    </span>
+  <% end %>
   <br />
   <br />
   Due
@@ -30,9 +42,9 @@
 
 <div class="issue-details">
 <%= link_to(image_tag('ticket.png') + '#' + h(issue.id), :controller => 'issues', :action => 'show', :id => issue) %>
-- [<%= h(issue.project.name) %>] -
-<%= h(issue.subject) %> -
-<span class="tags"><%= h(issue.tags.collect { |t| t.name }.join(' | ')) %></span> -
+[<%= h(issue.project.name) %>]
+<%= h(issue.subject) %>
+<span><%= render_tags_list(issue.tags, :style => :simple_cloud) %></span>
 </div>
 
 <div style="clear:both;"></div>

@@ -1,6 +1,6 @@
 #ajax-indicator { z-index: 300; }
 div.calendar {z-index: 200; }
-ol#available { overflow-y:auto; height: 500px; }
+ol#available { overflow-y:auto; height: 850px; }
 ol#recommended { overflow-y:auto; height: 300px; }
 li.issue, li.project { cursor: move; }
 li.project { font-weight: bold; }

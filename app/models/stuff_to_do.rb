@@ -82,7 +82,9 @@ class StuffToDo < ActiveRecord::Base
 
     stuff_to_do = StuffToDo.find(:all, :conditions => { :user_id => user.id }).collect(&:stuff)
     
-    return potential_stuff_to_do - stuff_to_do
+    stuffs = potential_stuff_to_do - stuff_to_do
+    stuffs.sort! { |a,b| -1 * (a.try(:fixed_version).try(:id).to_i <=> b.try(:fixed_version).try(:id).to_i) }
+    return stuffs
   end
 
   def self.using_projects_as_items?
