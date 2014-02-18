@@ -83,7 +83,19 @@ class StuffToDo < ActiveRecord::Base
     stuff_to_do = StuffToDo.find(:all, :conditions => { :user_id => user.id }).collect(&:stuff)
     
     stuffs = potential_stuff_to_do - stuff_to_do
-    stuffs.sort! { |a,b| -1 * (a.try(:fixed_version).try(:id).to_i <=> b.try(:fixed_version).try(:id).to_i) }
+    stuffs.sort! do |a,b|
+      aval = a.try(:fixed_version).try(:id)
+      bval = b.try(:fixed_version).try(:id)
+      if aval.nil? && bval.nil?
+        0
+      elsif aval.nil?
+        1
+      elsif bval.nil?
+        -1
+      else
+        a.try(:fixed_version).try(:id).to_i <=> b.try(:fixed_version).try(:id).to_i
+      end
+    end
     return stuffs
   end
 
