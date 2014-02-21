@@ -1,5 +1,9 @@
 <% html_title('Task Board') %>
-<h1>Task Board</h1>
+<div style="padding: 5px 0px 0px 5px;">
+  <span class='tag-label-color' style='font-size:20px;color:#ffffff;background-color:<%= tag_color(@user.name + "_even_better_colors") %>'>
+    <%= @user.name %>
+  </span>
+</div>
 
 <div id="stuff-to-do-error" class="flash error" style="display:none">
 
@@ -10,7 +14,13 @@
   <div class="user">
     <% form = form_tag({ :controller => 'stuff_to_do', :action => 'index'}, :method => :get, :id => 'user_switch' ) do  %>
     <label for="user_id"><%= l(:stuff_to_do_label_view_user_list) %></label>
-    <%= collection_select(:user, :id, @users.sort, :id, :name, { }, { :name => 'user_id'}) %>
+      <% @users.order(:id).each do |u| %>
+          <span class='tag-nube-1' style='font-size: 1em;'>
+            <span class='tag-label-color' style='color:#ffffff;background-color:<%= tag_color(u.name + "_even_better_colors") %>'>
+              <%= link_to(u.name, '/stuff_to_do?utf8=✓&user_id=' + u.id.to_s) %>
+            </span>
+          </span>
+      <% end %>
     <% end %>
     <%= form if Rails::VERSION::MAJOR >= 3 %>
   </div>
@@ -44,3 +54,4 @@
   <%= javascript_tag("var user_id = #{@user.id};") %>
   <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
 <% end %>
+
