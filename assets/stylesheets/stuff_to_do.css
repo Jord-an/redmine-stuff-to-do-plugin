@@ -21,6 +21,11 @@ div.menu { float:right; text-align: right; }
 .stuff-to-do-item div.issue-status-qa { background-color: #FFFFD2; font-weight: bold; }
 .stuff-to-do-item div.issue-status-feedback { background-color: #FFD1D1; font-weight: bold; }
 .stuff-to-do-item div.agreed-on-estimate { color: #FF1111; font-weight: bold; }
+.stuff-to-do-item span.no-sprint{ background-color: #FFFFD2; border: 1px solid #000; }
+.stuff-to-do-item span.difficulty-trivial{ position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; background-color: #454545; color: #00D900; }
+.stuff-to-do-item span.difficulty-easy{ position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; background-color: #454545; color: #F6FF00; }
+.stuff-to-do-item span.difficulty-hard{ position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; background-color: #454545; color: #FF7C6B; }
+.stuff-to-do-item span.no-due-date{ background-color: #FFD1D1; border: 1px solid #000; font-weight: bold; }
 .stuff-to-do-item span.tags { color: #093; font-weight:bold; font-style:italic; }
 .stuff-to-do-item div.status p.pourcent { display: none; }
 .stuff-to-do-item { border-bottom: solid 1px #ccc; }
@@ -114,8 +119,8 @@ input.save-time-grid { float: right; margin-top: 10px; margin-bottom: 10px; }
 .context-menu a.disabled, .context-menu a.disabled:hover {color: #ccc;}
 .context-menu li a.submenu { background:url("../images/sub.gif") right no-repeat; }
 .context-menu a:hover { border-color:gray; background-color:#eee; color:#2A5685; }
-.context-menu li.folder a:hover { background-color:#eee; }	
-.context-menu li.folder:hover { z-index:40; }		
+.context-menu li.folder a:hover { background-color:#eee; }
+.context-menu li.folder:hover { z-index:40; }
 .context-menu ul ul, .context-menu  li:hover ul ul { display:none; }
 .context-menu li:hover ul, .context-menu li:hover li:hover ul {	display:block; }
 

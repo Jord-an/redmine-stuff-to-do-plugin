@@ -2,12 +2,17 @@
 
 <div class="status">
   <div class="progress"><%= progress_bar(issue.done_ratio, :width => '100%') %></div>
-  <% if issue.estimated_hours && issue.estimated_hours > 0 %>
-    <% original_estimate = issue.custom_field_values.select { |value| value.custom_field_id == 2 }.first.value.to_s %>
-    <% original_estimate = original_estimate == '' ? 'NOE' : original_estimate %>
-    <div class="estimate"><%= h(issue.total_spent_hours) + ' / ' + h(issue.estimated_hours) + ' [' + original_estimate + ']' %></div>
+  <% if issue.tracker.to_s != 'Bug' && issue.tracker.to_s != 'Support' %>
+    <% if issue.estimated_hours && issue.estimated_hours > 0 %>
+      <% original_estimate = issue.custom_field_values.select { |value| value.custom_field_id == 2 }.first.value.to_s %>
+      <% original_estimate = original_estimate == '' ? 'NOE' : original_estimate %>
+      <div class="estimate"><%= h(issue.total_spent_hours) + ' / ' + h(issue.estimated_hours) + ' [' + original_estimate + ']' %></div>
+    <% else %>
+      <div class="estimate"><%= h(issue.total_spent_hours) + ' / [NE]' %> &nbsp;</div>
+    <% end %>
   <% else %>
-    <div class="estimate"><%= h(issue.total_spent_hours) + ' / [NE]' %> &nbsp;</div>
+    <% difficulty = issue.custom_field_values.select { |value| value.custom_field_id == 3 }.first.value.to_s %>
+    <div class="estimate"><span class="difficulty-<%= difficulty.downcase %>"><%= difficulty %></span></div>
   <% end %>
   <% if issue.status.to_s == 'QA' %>
     <div class="issue-status issue-status-qa">
@@ -35,15 +40,18 @@
       </span>
     </div>
   <% else %>
-    <span style="background-color:#FFF5B0;">
-      [ NO SPRINT ]
+    <br />
+    <span class="no-sprint">
+      &nbsp; NO SPRINT &nbsp;
     </span>
+    <br />
   <% end %>
   <br />
-  <br />
-  Due
-  <br />
-  <%= issue.due_date ? "[ " + issue.due_date.to_time.strftime('%m/%d/%Y') + " ]" : "[ - ]" %>
+  <% due_date = issue.due_date ? "Due: " + issue.due_date.to_time.strftime('%m/%d/%Y') : "NO DUE DATE" %>
+  <% due_date_class = issue.due_date ? "due-date-present" : "no-due-date" %>
+  <span class="<%= due_date_class %>">
+    &nbsp; <%= due_date %> &nbsp;
+  </span>
 </div>
 
 <div class="issue-details">
