@@ -12,7 +12,7 @@
     <% end %>
   <% else %>
     <% difficulty = issue.custom_field_values.select { |value| value.custom_field_id == 3 }.first.value.to_s %>
-    <div class="estimate"><span class="difficulty-<%= difficulty.downcase %>"><%= difficulty %></span></div>
+    <div class="estimate difficulty-<%= difficulty.downcase %>"><%= difficulty %></div>
   <% end %>
   <% if issue.status.to_s == 'QA' %>
     <div class="issue-status issue-status-qa">
