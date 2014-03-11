@@ -25,7 +25,8 @@ div.menu { float:right; text-align: right; }
 .stuff-to-do-item div.difficulty-trivial{ position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; background-color: #454545; color: #00D900; }
 .stuff-to-do-item div.difficulty-easy{ position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; background-color: #454545; color: #F6FF00; }
 .stuff-to-do-item div.difficulty-hard{ position:relative; float:right; display:inline; width: 100px; margin: 0 0 0 .5%; text-align: center; background-color: #454545; color: #FF7C6B; }
-.stuff-to-do-item span.no-due-date{ background-color: #FFD1D1; border: 1px solid #000; font-weight: bold; }
+.stuff-to-do-item span.no-due-date{ background-color: #FFD1D1; border: 1px solid #000; font-weight: bold; text-align: center; }
+.stuff-to-do-item span.due-date-present{ font-weight: bold; text-align: left; }
 .stuff-to-do-item span.tags { color: #093; font-weight:bold; font-style:italic; }
 .stuff-to-do-item div.status p.pourcent { display: none; }
 .stuff-to-do-item { border-bottom: solid 1px #ccc; }
