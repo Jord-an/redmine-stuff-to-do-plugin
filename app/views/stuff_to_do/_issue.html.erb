@@ -13,7 +13,9 @@
   <% else %>
     <% difficulty = issue.custom_field_values.select { |value| value.custom_field_id == 3 }.first.value.to_s %>
     <div class="estimate difficulty-<%= difficulty.downcase %>"><%= difficulty %></div>
+    <br />
   <% end %>
+  <hr />
   <% if issue.status.to_s == 'QA' %>
     <div class="issue-status issue-status-qa">
   <% elsif issue.status.to_s == 'Feedback' %>
