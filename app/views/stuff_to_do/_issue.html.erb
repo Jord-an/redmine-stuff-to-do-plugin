@@ -4,14 +4,14 @@
   <div class="progress"><%= progress_bar(issue.done_ratio, :width => '100%') %></div>
   <% if issue.tracker.to_s != 'Bug' && issue.tracker.to_s != 'Support' %>
     <% if issue.estimated_hours && issue.estimated_hours > 0 %>
-      <% original_estimate = issue.custom_field_values.select { |value| value.custom_field_id == 2 }.first.value.to_s %>
+      <% original_estimate = issue.custom_field_values.select { |value| value.custom_field_id == 2 unless value.nil? }.try(:first).try(:value).to_s %>
       <% original_estimate = original_estimate == '' ? 'NOE' : original_estimate %>
       <div class="estimate"><%= h(issue.total_spent_hours) + ' / ' + h(issue.estimated_hours) + ' [' + original_estimate + ']' %></div>
     <% else %>
       <div class="estimate"><%= h(issue.total_spent_hours) + ' / [NE]' %> &nbsp;</div>
     <% end %>
   <% else %>
-    <% difficulty = issue.custom_field_values.select { |value| value.custom_field_id == 3 }.first.value.to_s %>
+    <% difficulty = issue.custom_field_values.select { |value| value.custom_field_id == 3 unless value.nil? }.try(:first).try(:value).to_s %>
     <div class="estimate difficulty-<%= difficulty.downcase %>"><%= difficulty %></div>
     <br />
   <% end %>
@@ -26,7 +26,7 @@
       <%= h(issue.status) %>
     </div>
     <div class="agreed-on-estimate">
-      <% agree_on_estimate = issue.custom_field_values.select { |value| value.custom_field_id == 5 }.first.value.to_s %>
+      <% agree_on_estimate = issue.custom_field_values.select { |value| value.try(:custom_field_id) == 5 unless value.nil? }.try(:first).try(:value).to_s %>
       <%= agree_on_estimate != '1' ? 'No Agreement' : '' %>
     </div>
   <div style="clear:both;"></div>
